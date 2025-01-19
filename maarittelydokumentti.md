@@ -30,5 +30,5 @@ lukumäärä) ja d on haun syvyys (monta siirtoa eteenpäin lasketaan). [1]
 Algorimit tilavaativuus on myös luokkaa: O(b^d). [1]
 
 ## Viitteet
-[1] (https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning)
-[2] (https://algolabra-hy.github.io/topics-fi#ristinolla--gomoku)
+1. https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning
+2. https://algolabra-hy.github.io/topics-fi#ristinolla--gomoku
