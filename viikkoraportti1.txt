@@ -1,0 +1,19 @@
+Mitä olen tehnyt tällä viikolla?
+- Työn aiheen valinta
+- Ohjelmointikielen ja kirjastojen valinta
+
+Miten ohjelma on edistynyt?
+- Hahmottelua miten ohjelma tulisi toteuttaa.
+- Määrittelydokementti tehty.
+
+Mitä opin tällä viikolla / tänään?
+- Opiskelin React JS ja Vite kirjastoja
+
+Mikä jäi epäselväksi tai tuottanut vaikeuksia
+- Millä tavalla toteutan käyttöliittymän.
+
+Mitä teen seuraavaksi?
+- Luon projektin rungon ja aloitan koodaamaan.
+
+Käytettu aika
+- 12 tuntia
