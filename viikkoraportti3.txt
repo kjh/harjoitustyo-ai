@@ -1,12 +1,11 @@
 Mitä olen tehnyt tällä viikolla?
 - Projektin runko luotu
-- Testit saatu toimimaan mutta ei vielä lisätty projektiin (menee ensi viikkoon)
+- Testaus lisätty projektiin: Jest ja yksi testi
 
 Miten ohjelma on edistynyt?
 - Työn ruko luotu
 - Alustavia kokeiluja käyttäliittymästä ja ohjelman rakenteesta
-- Yksikköestit ja testikattavuus Jestin avulla saatu toimimaan (ei vielä palautettu, 
-kun itse ohjelman toteutus kesken)
+- Yksikköestit ja testikattavuus Jestin avulla saatu toimimaan 
 - Käyttöliittymästä on alustava versio (ei vielä palautettu)
 
 Mitä opin tällä viikolla / tänään?
