@@ -1,0 +1,27 @@
+Mitä olen tehnyt tällä viikolla?
+- Projektin runko luotu
+- Testit saatu toimimaan mutta ei vielä lisätty projektiin (menee ensi viikkoon)
+
+Miten ohjelma on edistynyt?
+- Työn ruko luotu
+- Alustavia kokeiluja käyttäliittymästä ja ohjelman rakenteesta
+- Yksikköestit ja testikattavuus Jestin avulla saatu toimimaan (ei vielä palautettu, 
+kun itse ohjelman toteutus kesken)
+- Käyttöliittymästä on alustava versio (ei vielä palautettu)
+
+Mitä opin tällä viikolla / tänään?
+- Opiskelin lisää React JS ja Vite kirjastoja
+- Opiskelin Jest kirjastoa
+- Tutkin Minmax-aloritmi toimintaa
+
+Mikä jäi epäselväksi tai tuottanut vaikeuksia
+- React JS ympäristö 
+
+Mitä teen seuraavaksi?
+- Tekoälyn alustava versio
+- Ohjelman rakenne kuntoon
+- Testit alkuun
+
+
+Käytettu aika
+- noin 4 tuntia 
