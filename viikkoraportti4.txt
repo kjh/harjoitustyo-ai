@@ -1,0 +1,28 @@
+Mitä olen tehnyt tällä viikolla?
+- Rakentanut projektin käyttöliittymää. 
+- Rakenne alkaa olemaan valmis.
+- Käyttölittymässä on hyödynnettu tekoälyä: mm. css-tyylit ja pelilauta.
+
+Miten ohjelma on edistynyt?
+- Työn ruko luotu
+- Alustavia kokeiluja käyttäliittymästä ja ohjelman rakenteesta
+- Yksikköestit ja testikattavuus Jestin avulla saatu toimimaan 
+- Käyttöliittymästä on alustava versio (ei vielä palautettu)
+
+Mitä opin tällä viikolla / tänään?
+- Opiskelin lisää React JS ja Vite kirjastoja
+- Luin: https://react.dev/learn/tutorial-tic-tac-toe
+- Tutkin Minmax-aloritmi toimintaa
+- Mietin miten saada voittorivi selville tehokkaasti
+
+Mikä jäi epäselväksi tai tuottanut vaikeuksia
+- Mietin miten saada voittorivi selville tehokkaasti
+- Aika loppui kesken, kun vanha tietokone meni rikki ja kaikki piti asentaa uudestaan
+
+Mitä teen seuraavaksi?
+- Tekoälyn alustava versio
+- Voittorivin heuristiikka
+
+
+Käytettu aika
+- noin 6 tuntia 
