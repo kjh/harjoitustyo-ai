@@ -1,18 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Game from './Game';
 import './App.css';
-
-export const Board = () => {
-  return (
-    <div className="board">
-    </div>
-  );
-};
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="app">
       <h1>Gomoku Game</h1>
-      <Board />
+      <Game />
     </div>
   );
 };
