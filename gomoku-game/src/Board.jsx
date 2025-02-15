@@ -10,7 +10,7 @@ const Board = ({ board, handleClick }) => {
 
   return (
     <div className="board">
-      {board.flatMap((row, rowIndex) =>
+      {board.map((row, rowIndex) =>
         row.map((cell, colIndex) => (
           <div key={`${rowIndex}-${colIndex}`} className="cell-container">
             {renderCell(rowIndex, colIndex)}

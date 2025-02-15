@@ -1,0 +1,23 @@
+Mitä olen tehnyt tällä viikolla?
+- käyttöliittymä lähes valmis
+
+Miten ohjelma on edistynyt?
+- tekoälyn rakenne alkaa olla valmis
+
+
+Mitä opin tällä viikolla / tänään?
+- Tutkin Minmax-aloritmi toimintaa
+- Mietin miten saada voittorivi selville tehokkaasti
+- Mietin heuristiikkaa
+
+Mikä jäi epäselväksi tai tuottanut vaikeuksia
+- Mietin miten saada voittorivi selville tehokkaasti
+- Aika loppui kesken, kun React.js ei ole vielä kovin tuttua
+
+Mitä teen seuraavaksi?
+- Alpha-Beta-karsinta
+- Voittorivin heuristiikka
+
+
+Käytettu aika
+- noin 12 tuntia 
