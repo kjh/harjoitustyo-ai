@@ -11,7 +11,7 @@ const Board = ({ board, handleClick }) => {
   return (
     <div className="board">
       {board.map((row, rowIndex) =>
-        row.map((cell, colIndex) => (
+        row.map((_, colIndex) => (
           <div key={`${rowIndex}-${colIndex}`} className="cell-container">
             {renderCell(rowIndex, colIndex)}
           </div>

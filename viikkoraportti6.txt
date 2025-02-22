@@ -1,0 +1,22 @@
+Mitä olen tehnyt tällä viikolla?
+- käyttöliittymä lähes valmis
+- tekoälyn melkein valmis
+
+Miten ohjelma on edistynyt?
+- tekoälyn rakenne alkaa olla valmis
+- heuristiikka alustavasti mietitty
+
+
+Mitä opin tällä viikolla / tänään?
+- Mietin heuristiikkaa
+
+Mikä jäi epäselväksi tai tuottanut vaikeuksia
+- Mietin miten saada voittorivi selville tehokkaasti
+- Aika loppui kesken, kun React.js ei ole vielä kovin tuttua
+
+Mitä teen seuraavaksi?
+- Alpha-Beta-karsinta
+
+
+Käytettu aika
+- noin 12 tuntia 
