@@ -2,6 +2,8 @@
 
 Algoritmit ja tekoäly harjoitustyö.
 
+Opintoohjelma: tietojenkäsittelytieteen kandidaatti (TKT)
+
 ## Aihe: Ristinolla
 
 ## Ohjelmointikielet
@@ -27,7 +29,7 @@ Algoritmi saa työtteenä pelilaudan tilan, josta lähdetään etsimään parast
 Minmax-algoritmin aikavaativuus on luokkaa: O(b^d), missä b on pelipuun haarautumisaste (sallittujen siirtojen
 lukumäärä) ja d on haun syvyys (monta siirtoa eteenpäin lasketaan). [1]
 
-Algorimit tilavaativuus on myös luokkaa: O(b^d). [1]
+Algorimit tilavaativuus on on d (haun syvyys), joka on siis vakio O(1). [1]
 
 ## Viitteet
 1. https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning
