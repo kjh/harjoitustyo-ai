@@ -20,7 +20,7 @@ Tärkeimmät funktiot ovat:
 - alpha-beta karsinta hyötyy, jos paremmat siirrot käsitellään ensin. Eli siirtojen järjestyksellä voidaan tehostaa algoritmia.
 
 ```javascript export const getNextMoves = (board, nextMovesList, row, col)```
-- Jokaisen siirron jälkeen lisätään hakulistaan - suhteessa pelatuun merkkiin - yhden päässä olevat ruudut. 
+- Jokaisen siirron jälkeen lisätään hakulistaan - suhteessa pelattuun merkkiin - yhden päässä olevat ruudut. 
 - Tätä parametria voisi muokata niin, että lisätään 2 päässä olevat siirrot. (Ei toteutettu, mutta hyvä parannusehdotus.)
 - Lisäksi paremmat siirrot kannattaa kokeilla ensin. (Ei toteutettu, mutta hyvä parannusehdotus.)
 
