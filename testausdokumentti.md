@@ -172,7 +172,7 @@ game.test.js testsuite testit:
 - syöte: pelilaudan tilanne
 - testaa että palauttaa oikeat arvot
 
-## Testattu funktio: Board
+### Testattu funktio: Board
 
 Board.test.js testsuite testit:
 
