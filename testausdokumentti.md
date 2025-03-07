@@ -89,7 +89,7 @@ scorePosition.test.js testsuite testit:
 - syöte: pelitilanne
 - testaa että palauttaa oikeat pisteet
 
-should return 0 for an empty board
+'should return 0 for an empty board'
 - testattu funktio: evaluateRows
 - syöte: tyhjä pelilauta
 - testaa että palauttaa 0 pistettä
@@ -114,7 +114,7 @@ should return 0 for an empty board
 - syöte: pelitilanne
 - testaa että palauttaa oikeat pisteet
 
-should return 0 for an empty board
+'should return 0 for an empty board'
 - testattu funktio: evaluateColumns
 - syöte: tyhjä pelilauta
 - testaa että palauttaa 0 pistettä
@@ -129,7 +129,7 @@ should return 0 for an empty board
 - syöte: pelitilanne
 - testaa että palauttaa oikeat pisteet
 
-should return 0 for an empty board
+'should return 0 for an empty board'
 - testattu funktio: evaluateDiagonals
 - syöte: tyhjä pelilauta
 - testaa että palauttaa 0 pistettä
@@ -144,7 +144,7 @@ should return 0 for an empty board
 - syöte: pelitilanne
 - testaa että palauttaa oikeat pisteet
 
-should return 0 for an empty board
+'should return 0 for an empty board'
 - testattu funktio: evaluateAntiDiagonals
 - syöte: tyhjä pelilauta
 - testaa että palauttaa 0 pistettä
