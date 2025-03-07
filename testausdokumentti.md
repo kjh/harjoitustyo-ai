@@ -9,13 +9,13 @@ Testikattavuuden saa komennolla npm test -- --coverage
 
 Testikattavuus:
 
------------|---------|----------|---------|---------|
+
 File       | % Stmts | % Branch | % Funcs | % Lines | 
 -----------|---------|----------|---------|---------|
 All files  |   87.59 |    82.94 |   92.59 |   88.21 |
  Board.jsx |   85.71 |      100 |      80 |     100 |
  minmax.js |   87.62 |    82.94 |   95.45 |   88.02 |  
------------|---------|----------|---------|---------|
+
 
 ##Testitiedostot/suitet
 
