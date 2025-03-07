@@ -17,9 +17,9 @@ All files  |   87.59 |    82.94 |   92.59 |   88.21 |
  minmax.js |   87.62 |    82.94 |   95.45 |   88.02 |  
 
 
-##Testitiedostot/suitet
+## Testitiedostot/suitet
 
-###Testattu funktio: checWin
+### Testattu funktio: checWin
 
 checWin.test.js testsuite testit:
 
@@ -43,7 +43,7 @@ checWin.test.js testsuite testit:
 - syöte: pelilauta jossa vain 1 siirto
 - testaa että ei palauta voittoa jos sitä ei ole
 
-###Testattu funktio: getNextMoves
+### Testattu funktio: getNextMoves
 
 getNextMoves.test.js testsuite testit:
 
@@ -60,7 +60,7 @@ Ja poistaa listasta pelatun siirron, jos tarpeen.
 - syöte: tyhjä pelilauta
 - testaa että palauttaa oikeat siirrot kun pelataan pelilaudan kulmaan [0,0]
 
-###Testatut funktio: scorePosition ja evaluateRows, evaluateColumns, evaluateDiagonals, evaluateAntiDiagonals, evaluateBoard
+### Testatut funktio: scorePosition ja evaluateRows, evaluateColumns, evaluateDiagonals, evaluateAntiDiagonals, evaluateBoard
 
 scorePosition.test.js testsuite testit:
 
@@ -163,7 +163,7 @@ should return 0 for an empty board
 - syöte: tyhjä pelilauta
 - testaa että palauttaa 0 pistettä
 
-###Testattu funktio: minmax
+### Testattu funktio: minmax
 
 game.test.js testsuite testit:
 
