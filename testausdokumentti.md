@@ -19,9 +19,9 @@ All files  |   87.59 |    82.94 |   92.59 |   88.21 |
 
 ## Testitiedostot/suitet
 
-### Testattu funktio: checWin
+### Testattu funktio: checkWin
 
-checWin.test.js testsuite testit:
+checkWin.test.js testsuite testit:
 
 'should return true for a winning row'
 - syöte: pelilauta jossa voittorivi
