@@ -4,7 +4,9 @@ Algoritmit ja tekoäly harjoitustyö.
 
 Opinto-ohjelma: tietojenkäsittelytieteen kandidaatti (TKT)
 
-## Aihe: Ristinolla (Gomoku termiä käytetään mm. koodissa. Tässä harjoitustyössä nämä tarkoittavat samaaa peliä.)
+## Aihe: Ristinolla/Gomoku
+
+(Gomoku termiä käytetään mm. koodissa. Tässä harjoitustyössä näillä termeillä tarkoitetaan samaa peliä.)
 
 ## Ohjelman yleisrakenne
 
