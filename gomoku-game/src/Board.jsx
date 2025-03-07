@@ -9,10 +9,10 @@ const Board = ({ board, handleClick }) => {
   );
 
   return (
-    <div className="board">
+    <div role="grid" className="board">
       {board.map((row, rowIndex) =>
         row.map((_, colIndex) => (
-          <div key={`${rowIndex}-${colIndex}`} className="cell-container">
+          <div key={`${rowIndex}-${colIndex}`} role="cell" className="cell-container">
             {renderCell(rowIndex, colIndex)}
           </div>
         ))
