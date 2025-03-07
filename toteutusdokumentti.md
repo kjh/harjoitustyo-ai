@@ -25,7 +25,7 @@ Tärkeimmät funktiot ovat:
 - Lisäksi paremmat siirrot kannattaa kokeilla ensin. (Ei toteutettu, mutta hyvä parannusehdotus.)
 
 ```javascript export const evaluateBoard = (board, isMaximizingPlayer) ja export const scorePosition = (len, plr)```
- - Nämä funktion pisteyttäävät hakupuun maksimisyvyydessä olevat lehtisolmut.
+ - Nämä funktion pisteyttävät hakupuun maksimisyvyydessä olevat lehtisolmut.
  - Maksimoiva pelaaja (AI/'O') saa positiiviset pisteet ja minimoiva pelaaja (PLAYER/'X') negatiiviset pisteet.
  - scorePosition pisteyttää pelilaudan. Esim. yksi X on 1 pisteen arvoinen, XX on 2 pisteen, XXX on 10 jne. 
  - Tämä ei tarkista onko suora avoin (voi voittaa) suljettu (ei voi voittaa). (Ei toteutettu, mutta hyvä parannusehdotus.)
@@ -68,6 +68,7 @@ Haku tehdään syvyyssuuntaisena hakuna. Koska hakusyvyys on rajoitettu tilavaat
 - Paremmat siirrot kannattaa kokeilla ensin.
 - Parempi heuristiikka: esim. onko suora avoin (voi voittaa) suljettu (ei voi voittaa).
 - Välittömiin uhkiin reagointi.
+- Kattavampi testaus minmax-algoritmille.
 
 ## Viitteet
 1. https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning
