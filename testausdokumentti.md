@@ -2,7 +2,7 @@
 Testit suoritetaan komennolla npm test
 Yksittäinen testi suite suoritetaan komennolla npm test game.test.js (suoritettavan testin tiedosto paremetrina)
 
-Testauksessa on keskitetty yksittäisten fuktioiden tai toimintojen testaamiseen. game.test.js tiedostossa testataan
+Testauksessa on keskitetty yksittäisten funktioiden tai toimintojen testaamiseen. game.test.js tiedostossa testataan
 tekoälyn tuottamia siirtoja.
 
 Testitiedostot/suitet
