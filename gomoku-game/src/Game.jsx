@@ -74,7 +74,7 @@ const Game = () => {
  
 
   const findBestMove = (board, nextMovesList, row, col) => {
-    const res = minmax(board, nextMovesList, 2, true, row, col, -Infinity, Infinity)
+    const res = minmax(board, nextMovesList, 4, true, row, col, -Infinity, Infinity)
     return { score: res.score, row: res.row, col: res.col }
   }
 

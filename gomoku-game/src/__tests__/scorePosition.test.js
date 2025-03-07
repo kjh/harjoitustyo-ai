@@ -35,7 +35,7 @@ describe('scorePosition', () => {
 
 
 describe('evaluateRows', () => {
-    it('should calculate score for Rows correctly', () => {
+    it('should calculate score for Rows correctly #1', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][0] = AI;
         board[0][1] = AI;
@@ -49,7 +49,7 @@ describe('evaluateRows', () => {
         expect(evaluateRows(board)).toBe(2 - 10);
     });
 
-    it('should calculate score for Rows correctly', () => {
+    it('should calculate score for Rows correctly #2', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][0] = AI;
         board[0][1] = AI;
@@ -66,7 +66,7 @@ describe('evaluateRows', () => {
         expect(evaluateRows(board)).toBe(1000 - 1000);
     });
 
-    it('should calculate score for Rows correctly', () => {
+    it('should calculate score for Rows correctly #3', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][0] = AI;
         board[0][1] = null;
@@ -95,7 +95,7 @@ describe('evaluateRows', () => {
         expect(evaluateRows(board)).toBe(Infinity);
     });
 
-    it('should calculate score for Rows correctly', () => {
+    it('should calculate score for Rows correctly #4', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][14] = PLAYER;
         board[0][15] = PLAYER;
@@ -120,7 +120,7 @@ describe('evaluateRows', () => {
 });
 
 describe('evaluateColumns', () => {
-    it('should calculate score for Columns correctly', () => {
+    it('should calculate score for Columns correctly  #1', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][0] = AI;
         board[1][0] = AI;
@@ -134,7 +134,7 @@ describe('evaluateColumns', () => {
         expect(evaluateColumns(board)).toBe(2 - 10);
     });
 
-    it('should calculate score for Columns correctly', () => {
+    it('should calculate score for Columns correctly #2', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][0] = AI;
         board[1][0] = AI;
@@ -151,7 +151,7 @@ describe('evaluateColumns', () => {
         expect(evaluateColumns(board)).toBe(1000 - 1000);
     });
 
-    it('should calculate score for Columns correctly', () => {
+    it('should calculate score for Columns correctly #3', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][0]= AI;
         board[1][0]= null;
@@ -180,7 +180,7 @@ describe('evaluateColumns', () => {
         expect(evaluateColumns(board)).toBe(Infinity);
     });
 
-    it('should calculate score for Columns correctly', () => {
+    it('should calculate score for Columns correctly #4', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
 
         board[14][0] = PLAYER;
@@ -206,7 +206,7 @@ describe('evaluateColumns', () => {
 });
 
 describe('evaluateDiagonals', () => {
-    it('should calculate score for Diagonals correctly', () => {
+    it('should calculate score for Diagonals correctly #1', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][0] = AI;
         board[1][1] = AI;
@@ -220,7 +220,7 @@ describe('evaluateDiagonals', () => {
         expect(evaluateDiagonals(board)).toBe(2 - 10);
     });
 
-    it('should calculate score for Diagonals correctly', () => {
+    it('should calculate score for Diagonals correctly #2', () => {
        const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][0]= AI;
         board[1][1]= null;
@@ -260,7 +260,7 @@ describe('evaluateDiagonals', () => {
 });
 
 describe('evaluateAntiDiagonals', () => {
-    it('should calculate score for AntiDiagonals correctly', () => {
+    it('should calculate score for AntiDiagonals correctly #1', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][4] = AI;
         board[1][3] = AI;
@@ -274,7 +274,7 @@ describe('evaluateAntiDiagonals', () => {
         expect(evaluateAntiDiagonals(board)).toBe(2 - 10);
     });
 
-    it('should calculate score for AntiDiagonals correctly', () => {
+    it('should calculate score for AntiDiagonals correctly #2', () => {
        const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][19]= AI;
         board[1][18]= null;
@@ -331,7 +331,7 @@ describe('evaluateBoard', () => {
         expect(evaluateBoard(board)).toBe(0);
     });
 
-    it('should calculate score for Board correctly', () => {
+    it('should calculate score for Board correctly #1', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][0] = AI;
         board[0][1] = null;
@@ -360,7 +360,7 @@ describe('evaluateBoard', () => {
         expect(evaluateBoard(board)).toBe(Infinity);
     });
 
-    it('should calculate score for Board correctly', () => {
+    it('should calculate score for Board correctly #2', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
 
         board[0][14] = PLAYER;
