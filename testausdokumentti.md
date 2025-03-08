@@ -19,6 +19,10 @@ All files  |   87.59 |    82.94 |   92.59 |   88.21 |
 
 ## Testitiedostot/suitet
 
+- Testien kommenteissa lisätietoa
+- Osassa testeissä console.log printtaa testattavan pelitilanteen/pelilaudan. 
+En ole kopioinut näitä tietoja tähän dokumenttiin.
+
 ### Testattu funktio: checkWin
 
 checkWin.test.js testsuite testit:
@@ -129,20 +133,30 @@ scorePosition.test.js testsuite testit:
 - syöte: pelitilanne
 - testaa että palauttaa oikeat pisteet
 
+'should not calculate corner Diagonals if lenght < 5'
+- testattu funktio: evaluateDiagonals
+- syöte: pelitilanne
+- testaa että palauttaa 0 pistettä
+
 'should return 0 for an empty board'
 - testattu funktio: evaluateDiagonals
 - syöte: tyhjä pelilauta
 - testaa että palauttaa 0 pistettä
 
-'should calculate score for AntiDiagonals correctly #1'
+'should calculate score for Antidiagonals correctly #1'
 - testattu funktio: evaluateAntiDiagonals
 - syöte: pelitilanne
 - testaa että palauttaa oikeat pisteet
 
-'should calculate score for AntiDiagonals correctly #2'
+'should calculate score for Antidiagonals correctly #2'
 - testattu funktio: evaluateAntiDiagonals
 - syöte: pelitilanne
 - testaa että palauttaa oikeat pisteet
+
+'should not calculate corner Antidiagonals if lenght < 5'
+- testattu funktio: evaluateAntiDiagonals
+- syöte: pelitilanne
+- testaa että palauttaa 0 pistettä
 
 'should return 0 for an empty board'
 - testattu funktio: evaluateAntiDiagonals

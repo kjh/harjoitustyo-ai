@@ -63,17 +63,21 @@ Haarautumisaste on rajoitettu etsimällä aloitussiirrot 1 päähän pelatuista.
 
 Haku tehdään syvyyssuuntaisena hakuna. Koska hakusyvyys on rajoitettu tilavaativuus ei ole rajoite.
 
+Pelin käyttämä oletushakusyvyys on 4 ja sillä asetuksella tuottaa järkeviä siirtoja. Hakuaika on pelin alussa hyvä vielä tällä syvyydellä.    
+
 ## Puutteet ja parannusehdotukset
 - Lisätään 2 päässä olevat siirrot etsittäviin. 
 - Paremmat siirrot kannattaa kokeilla ensin.
 - Parempi heuristiikka: esim. onko suora avoin (voi voittaa) suljettu (ei voi voittaa).
 - Välittömiin uhkiin reagointi.
 - Kattavampi testaus minmax-algoritmille.
+- Jos laskenta vie liikaa aikaa, selain ei tykkää tästä ja kysyy odotetaanko vai lopetetaan suoritus. Tämä johtuu siitä että
+javascript on suoritetaan yhdessä säikeessä. Javascriptin 'web worker' ominaisuuden avulla laskennan voisi suorittaa omassa säikeessä ilman, että selainikkuna jumiutuu tai herjaa.
 
 ## Viitteet
 1. https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning
 2. https://algolabra-hy.github.io/topics-fi#ristinolla--gomoku
 
 ## Laajojen kielimallienkäyttö:
-- React.js projektin alkuun saamiseen (käyttöliittymä).
-- Lisäksi kielimalleja on hyödynnetty osassa yksikkötestejä (muokattu itse kun tarpeen). 
+- React.js projektin alkuun saamiseen (mm. käyttöliittymä, mutta jatkokehitetty/muokattu itse).
+- Lisäksi kielimalleja on hyödynnetty osassa yksikkötestejä (jatkokehitetty/muokattu itse). 

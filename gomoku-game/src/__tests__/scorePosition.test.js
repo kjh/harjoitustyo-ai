@@ -4,7 +4,7 @@ import { scorePosition, evaluateRows, evaluateColumns, evaluateDiagonals, evalua
 const AI = 'O';
 const PLAYER = 'X';
 
-const DEBUG_MGS = false 
+const DEBUG_MGS = true
 
 const log = (board) => {
     let msg = ''
@@ -249,6 +249,19 @@ describe('evaluateDiagonals', () => {
         expect(evaluateDiagonals(board)).toBe(Infinity);
     });
 
+    it('should not calculate corner Diagonals if lenght < 5', () => {
+        const board = Array(20).fill(null).map(() => Array(20).fill(null));
+        board[16][0] = AI;
+        board[17][1] = AI;
+        board[18][2] = PLAYER;
+        board[19][3] = PLAYER;
+
+        log(board)
+
+        // Score should be AI: skip, PLAYER: skip 
+        expect(evaluateDiagonals(board)).toBe(0);
+    });
+
     it('should return 0 for an empty board', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
 
@@ -260,7 +273,7 @@ describe('evaluateDiagonals', () => {
 });
 
 describe('evaluateAntiDiagonals', () => {
-    it('should calculate score for AntiDiagonals correctly #1', () => {
+    it('should calculate score for Antidiagonals correctly #1', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][4] = AI;
         board[1][3] = AI;
@@ -274,7 +287,7 @@ describe('evaluateAntiDiagonals', () => {
         expect(evaluateAntiDiagonals(board)).toBe(2 - 10);
     });
 
-    it('should calculate score for AntiDiagonals correctly #2', () => {
+    it('should calculate score for Antidiagonals correctly #2', () => {
        const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][19]= AI;
         board[1][18]= null;
@@ -301,6 +314,19 @@ describe('evaluateAntiDiagonals', () => {
 
         // Score should be AI: 1 + 2 + 10 + 1000 + Infinity = Infinity, PLAYER: 0 (len 0)
         expect(evaluateAntiDiagonals(board)).toBe(Infinity);
+    });
+
+    it('should not calculate corner Antidiagonals if lenght < 5', () => {
+        const board = Array(20).fill(null).map(() => Array(20).fill(null));
+        board[0][3] = AI;
+        board[1][2] = AI;
+        board[2][1] = PLAYER;
+        board[3][0] = PLAYER;
+
+        log(board)
+
+        // Score should be AI: skip 0, PLAYER: skip 0 
+        expect(evaluateDiagonals(board)).toBe(0);
     });
 
     it('should return 0 for an empty board', () => {

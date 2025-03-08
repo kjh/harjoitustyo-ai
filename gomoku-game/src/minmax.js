@@ -125,9 +125,15 @@ export const evaluateDiagonals = (board) => {
 
     // diagonals
     for (let row = 0; row < boardSize; row++) {
-        let r = row, c = 0;
+        let r = row, c = 0
         len_ai = 0
         len_plr = 0
+
+        // only len 5 or over
+        if (boardSize - row < 5) {
+            continue 
+        }
+
         while (r < boardSize && c < boardSize) {
 
             if (board[r][c] === AI) {
@@ -153,8 +159,8 @@ export const evaluateDiagonals = (board) => {
                 }
                 len_ai = 0
             }
-            r++;
-            c++;
+            r++
+            c++
         }
         if (len_ai > 0) {
             score += scorePosition(len_ai, AI)
@@ -165,11 +171,16 @@ export const evaluateDiagonals = (board) => {
     }
 
     for (let col = 1; col < boardSize; col++) {
-        let r = 0, c = col;
+        let r = 0, c = col
         len_ai = 0
         len_plr = 0
-        while (r < boardSize && c < boardSize) {
 
+        // only len 5 or over
+        if (boardSize - col < 5) {
+            continue 
+        }
+
+        while (r < boardSize && c < boardSize) {
             if (board[r][c] === AI) {
                 len_ai += 1
                 if (len_plr >= 1) {
@@ -193,8 +204,8 @@ export const evaluateDiagonals = (board) => {
                 }
                 len_ai = 0
             }
-            r++;
-            c++;
+            r++
+            c++
         }
         if (len_ai > 0) {
             score += scorePosition(len_ai, AI)
@@ -219,9 +230,15 @@ export const evaluateAntiDiagonals = (board) => {
 
     // anti diagonals
     for (let row = 0; row < boardSize; row++) {
-        let r = row, c = boardSize - 1;
+        let r = row, c = boardSize - 1
         len_ai = 0
         len_plr = 0
+
+        // only len 5 or over
+        if (boardSize - row < 5) {
+            continue 
+        }
+
         while (r < boardSize && c >= 0) {
             if (board[r][c] === AI) {
                 len_ai += 1
@@ -246,8 +263,8 @@ export const evaluateAntiDiagonals = (board) => {
                 }
                 len_ai = 0
             }
-            r++;
-            c--;
+            r++
+            c--
         }
         if (len_ai > 0) {
             score += scorePosition(len_ai, AI)
@@ -261,6 +278,12 @@ export const evaluateAntiDiagonals = (board) => {
         let r = 0, c = col;
         len_ai = 0
         len_plr = 0
+
+        // only len 5 or over
+        if (boardSize - col < 5) {
+            continue 
+        }
+
         while (r < boardSize && c >= 0) {
             if (board[r][c] === AI) {
                 len_ai += 1
@@ -319,12 +342,12 @@ function checkImmediateThreat(board, player) {
         for (let col = 0; col < board[row].length; col++) {
             if (board[row][col] === null) {
                 // Test the opponent's move
-                board[row][col] = player;
+                board[row][col] = player
                 if (checkWin(board, player, row, col)) { 
-                    board[row][col] = null; 
-                    return [row, col]; // return winning move
+                    board[row][col] = null 
+                    return [row, col] // return winning move
                 }
-                board[row][col] = null; // Undo move
+                board[row][col] = null // Undo move
             }
         }
     }
@@ -435,8 +458,8 @@ export const getNextMoves = (board, nextMovesList, row, col) => {
         [0, 1], [1, 0], [0, -1], [-1, 0], // horizontal and vertical
         [1, 1], [1, -1], [-1, 1], [-1, -1] // diagonals
     ]
-    const isNextMovesListEmpty = nextMovesList === null || nextMovesList.length === 0;
-    const filteredMoves = isNextMovesListEmpty ? [] : nextMovesList.filter(move => !(move[0] === row && move[1] === col));
+    const isNextMovesListEmpty = nextMovesList === null || nextMovesList.length === 0
+    const filteredMoves = isNextMovesListEmpty ? [] : nextMovesList.filter(move => !(move[0] === row && move[1] === col))
     const nextMovesSet = new Set(filteredMoves.map(JSON.stringify))
 
     directions.forEach(([dRow, dCol]) => {
@@ -483,10 +506,10 @@ export const minmax = (board, nextMovesList, depth, isMaximizingPlayer, ri, cj, 
     }
 
     if (depth === 0) {
-        //console.log('terminal node')
-        //log(board)
+        console.log('terminal node')
+        log(board)
         const heuristic_score = evaluateBoard(board, isMaximizingPlayer)
-        //console.log('terminal node score', heuristic_score)
+        console.log('terminal node score', heuristic_score)
         return { score: heuristic_score, row: null, col: null }
     }
 
@@ -505,9 +528,9 @@ export const minmax = (board, nextMovesList, depth, isMaximizingPlayer, ri, cj, 
                 if (result.score > best.score) { // todo: >  can result error but >= is not working -> plays poorly
                     best = { score: result.score, row: i, col: j }
                 }
-                alpha = Math.max(alpha, result.score);
+                alpha = Math.max(alpha, result.score)
                 if (beta <= alpha) {
-                    break; // Alpha Beta Pruning
+                    break // Alpha Beta Pruning
                 }
             }
         }
@@ -528,9 +551,9 @@ export const minmax = (board, nextMovesList, depth, isMaximizingPlayer, ri, cj, 
                 if (result.score < best.score) {
                     best = { score: result.score, row: i, col: j }
                 }
-                beta = Math.min(beta, result.score);
+                beta = Math.min(beta, result.score)
                 if (beta <= alpha) {
-                    break; // Alpha Beta Pruning
+                    break // Alpha Beta Pruning
                 }
             }
         }
@@ -561,6 +584,6 @@ const log = (board) => {
     board.forEach(row => {
         msg += row.map(cell => cell === null ? '.' : cell).join(' ')
         msg += '\n'
-    });
+    })
     console.log(msg)
 }

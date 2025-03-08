@@ -17,4 +17,4 @@ Mikä jäi epäselväksi tai tuottanut vaikeuksia
 - Heuristiikan parannukset
 
 Käytettu aika
-- noin 24 tuntia 
+- noin 27 tuntia 
