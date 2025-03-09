@@ -353,7 +353,7 @@ function checkImmediateThreat(board, player) {
 
 
 /**
- * Used to check after playing a move check if that player has won.
+ * Used to check after playing a move if that player has won.
  * 
  *
  * @param {Array.<Array.<number|null>>} board - The 2D array representing the game board
@@ -509,7 +509,7 @@ export const applyMove = (board, move, turn) => {
  * @param {Array} nextMovesList - List of  next moves
  * @param {number} depth - The current depth in the tree
  * @param {boolean} isMaximizingPlayer - Is maximizing player's turn
- * @param {number} ri - Last moves cow index
+ * @param {number} ri - Last moves row index
  * @param {number} cj - Last moves column index
  * @param {number} alpha - Alpha value
  * @param {number} beta - Beta value 
