@@ -281,7 +281,7 @@ describe('evaluateAntiDiagonals', () => {
         board[9][9] = AI;
         log(board)
 
-        // Score should be AI: 2 (len 2), PLAYER: -10 (len 3)
+        // Score should be AI: 2 (len 4) 1000
         expect(evaluateAntiDiagonals(board)).toBe(1000);
     });
 

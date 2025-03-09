@@ -12,9 +12,9 @@ Testikattavuus:
 
 File       | % Stmts | % Branch | % Funcs | % Lines | 
 -----------|---------|----------|---------|---------|
-All files  |   87.59 |    82.94 |   92.59 |   88.21 |
+All files  |   95.22 |    90.74 |   96.15 |   96.19 |
  Board.jsx |   85.71 |      100 |      80 |     100 |
- minmax.js |   87.62 |    82.94 |   95.45 |   88.02 |  
+ minmax.js |   95.39 |    90.74 |     100 |   96.13 |  
 
 
 ## Testitiedostot/suitet
@@ -143,6 +143,11 @@ scorePosition.test.js testsuite testit:
 - syöte: tyhjä pelilauta
 - testaa että palauttaa 0 pistettä
 
+'should calculate score for Antidiagonals correctly #0'
+- testattu funktio: evaluateAntiDiagonals
+- syöte: pelitilanne
+- testaa että palauttaa oikeat pisteet
+
 'should calculate score for Antidiagonals correctly #1'
 - testattu funktio: evaluateAntiDiagonals
 - syöte: pelitilanne
@@ -163,6 +168,11 @@ scorePosition.test.js testsuite testit:
 - syöte: tyhjä pelilauta
 - testaa että palauttaa 0 pistettä
 
+'should calculate score for Board correctly #0'
+- testattu funktio: evaluateBoard
+- syöte: pelitilanne
+- testaa että palauttaa oikeat pisteet 
+
 'should calculate score for Board correctly #1'
 - testattu funktio: evaluateBoard
 - syöte: pelitilanne
@@ -182,6 +192,16 @@ scorePosition.test.js testsuite testit:
 game.test.js testsuite testit:
 
 'AI should block player if opponent has 4'
+- testattu funktio: minmax
+- syöte: pelilaudan tilanne
+- testaa että palauttaa oikeat arvot
+
+'AI should block player if opponent has 4 d=3'
+- testattu funktio: minmax
+- syöte: pelilaudan tilanne
+- testaa että palauttaa oikeat arvot
+
+'AI should win if it has diagonal of 4 on board d=4'
 - testattu funktio: minmax
 - syöte: pelilaudan tilanne
 - testaa että palauttaa oikeat arvot

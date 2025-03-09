@@ -34,7 +34,7 @@ describe('test minmax', () => {
         // AI's turn
         let result = minmax(newBoard3, nextMovesList3, 1, true, 0, 5, -Infinity, Infinity)
 
-        console.log('result', result)
+        //console.log('result', result)
 
         const newBoard4 = applyMove(newBoard3, [result.row, result.col], AI)
 
@@ -61,7 +61,7 @@ describe('test minmax', () => {
         // AI's turn
         let result = minmax(newBoard3, nextMovesList3, 3, true, 0, 5, -Infinity, Infinity)
 
-        console.log('result', result)
+        //console.log('result', result)
 
         const newBoard4 = applyMove(newBoard3, [result.row, result.col], AI)
 
@@ -96,7 +96,7 @@ describe('test minmax', () => {
         expect(result).toEqual({ score: Infinity, row: 0, col: 4 });
     });
 
-    it('AI should win player if has diagonal of 4 on board d=4', () => {
+    it('AI should win if it has diagonal of 4 on board d=4', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
 
         //board[6][12] = AI;
@@ -112,7 +112,7 @@ describe('test minmax', () => {
         // AI's turn
         let result = minmax(newBoard3, nextMovesList3, 4, true, 6, 12, -Infinity, Infinity)
 
-        console.log('result', result)
+        //console.log('result', result)
 
         const newBoard4 = applyMove(newBoard3, [result.row, result.col], AI)
 
