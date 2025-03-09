@@ -351,7 +351,7 @@ describe('evaluateAntiDiagonals', () => {
 });
 
 describe('evaluateBoard', () => {
-    it('should calculate score for Board correctly', () => {
+    it('should calculate score for Board correctly #0', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][0] = AI;
         board[0][1] = AI;
@@ -361,7 +361,6 @@ describe('evaluateBoard', () => {
         board[0][6] = PLAYER;
         board[0][7] = PLAYER;
         board[0][8] = PLAYER;
-        console.log("ERROR")
         log(board)
 
         // Score should be AI: -4 (no antidiagonals for ai)
