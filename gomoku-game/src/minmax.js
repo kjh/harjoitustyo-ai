@@ -13,8 +13,6 @@ export const scorePosition = (len, plr) => {
     if (len == 4) score = (plr === AI) ? 1000 : -1000
     if (len >= 5) score = (plr === AI) ? WINNING_SCORE : LOSING_SCORE
 
-    debugLog('score', score, len, plr)
-
     return score
 }
 
@@ -131,7 +129,7 @@ export const evaluateDiagonals = (board) => {
 
         // only len 5 or over
         if (boardSize - row < 5) {
-            continue 
+            continue
         }
 
         while (r < boardSize && c < boardSize) {
@@ -177,7 +175,7 @@ export const evaluateDiagonals = (board) => {
 
         // only len 5 or over
         if (boardSize - col < 5) {
-            continue 
+            continue
         }
 
         while (r < boardSize && c < boardSize) {
@@ -235,8 +233,8 @@ export const evaluateAntiDiagonals = (board) => {
         len_plr = 0
 
         // only len 5 or over
-        if (boardSize - row < 5) {
-            continue 
+        if (row > 15) {
+            continue
         }
 
         while (r < boardSize && c >= 0) {
@@ -280,8 +278,8 @@ export const evaluateAntiDiagonals = (board) => {
         len_plr = 0
 
         // only len 5 or over
-        if (boardSize - col < 5) {
-            continue 
+        if (col < 4) {
+            continue
         }
 
         while (r < boardSize && c >= 0) {
@@ -290,7 +288,6 @@ export const evaluateAntiDiagonals = (board) => {
                 if (len_plr >= 1) {
                     score += scorePosition(len_plr, PLAYER)
                 }
-                len_plr = 0
                 len_plr = 0
             } else if (board[r][c] === PLAYER) {
                 len_plr += 1
@@ -324,15 +321,15 @@ export const evaluateAntiDiagonals = (board) => {
     return score
 }
 
-export const evaluateBoard = (board, isMaximizingPlayer) => {
+export const evaluateBoard = (board) => {
     let score1 = evaluateRows(board)
-    debugLog('rows ', score1)
+    //console.log('rows ', score1)
     let score2 = evaluateColumns(board)
-    debugLog('cols ', score2)
+    //console.log('cols ', score2)
     let score3 = evaluateDiagonals(board)
-    debugLog('diag ', score3)
+    //console.log('diag ', score3)
     let score4 = evaluateAntiDiagonals(board)
-    debugLog('anti ', score4)
+    //console.log('anti ', score4)
 
     return score1 + score2 + score3 + score4
 }
@@ -343,17 +340,28 @@ function checkImmediateThreat(board, player) {
             if (board[row][col] === null) {
                 // Test the opponent's move
                 board[row][col] = player
-                if (checkWin(board, player, row, col)) { 
-                    board[row][col] = null 
+                if (checkWin(board, player, row, col)) {
+                    board[row][col] = null
                     return [row, col] // return winning move
                 }
                 board[row][col] = null // Undo move
             }
         }
     }
-    return null; 
+    return null;
 }
 
+
+/**
+ * Used to check after playing a move check if that player has won.
+ * 
+ *
+ * @param {Array.<Array.<number|null>>} board - The 2D array representing the game board
+ * @param {string} player - who played
+ * @param {number} moveRow - row of the move
+ * @param {number} moveCol - col of the move
+ * @returns {boolean} - true if player has 5 or more
+ */
 export const checkWin = (board, player, moveRow, moveCol) => {
     let len = 0
 
@@ -453,10 +461,20 @@ export const checkWin = (board, player, moveRow, moveCol) => {
     return false
 }
 
+/**
+ * Calculates and maintains the list of next possible moves. Adds adjacent moves.
+ * 
+ *
+ * @param {Array.<Array.<number|null>>} board - The 2D array representing the game board
+ * @param {Array.<Array.<number>>} nextMovesList - The list of next possible moves
+ * @param {number} row - row of the move
+ * @param {number} col - col of the move
+ * @returns {Array.<Array.<number>>} - An array of unique next moves as [row, col] pairs
+ */
 export const getNextMoves = (board, nextMovesList, row, col) => {
     const directions = [
-        [0, 1], [1, 0], [0, -1], [-1, 0], // horizontal and vertical
-        [1, 1], [1, -1], [-1, 1], [-1, -1] // diagonals
+        [0, 1], [1, 0], [0, -1], [-1, 0], // horizontal and vertical +1
+        [1, 1], [1, -1], [-1, 1], [-1, -1], // diagonals +1
     ]
     const isNextMovesListEmpty = nextMovesList === null || nextMovesList.length === 0
     const filteredMoves = isNextMovesListEmpty ? [] : nextMovesList.filter(move => !(move[0] === row && move[1] === col))
@@ -472,7 +490,6 @@ export const getNextMoves = (board, nextMovesList, row, col) => {
         }
     })
     const uniqueNextMoves = Array.from(nextMovesSet).map(JSON.parse)
-    debugLog('next moves', uniqueNextMoves)
 
     return uniqueNextMoves
 }
@@ -485,31 +502,58 @@ export const applyMove = (board, move, turn) => {
     )
 }
 
+/**
+ * Minimax algorithm with alpha-beta pruning.
+ *
+ * @param {Array} board - Game board
+ * @param {Array} nextMovesList - List of  next moves
+ * @param {number} depth - The current depth in the tree
+ * @param {boolean} isMaximizingPlayer - Is maximizing player's turn
+ * @param {number} ri - Last moves cow index
+ * @param {number} cj - Last moves column index
+ * @param {number} alpha - Alpha value
+ * @param {number} beta - Beta value 
+ * @returns {Object} The best move found with properties:
+ *                   - score: The minimax score of the move
+ *                   - row: The row of the move
+ *                   - col: The column of the move
+ */
+
 export const minmax = (board, nextMovesList, depth, isMaximizingPlayer, ri, cj, alpha, beta) => {
-    //console.log('\nminmax d:',depth, 'r:', ri, 'c:', cj)
     const turn = isMaximizingPlayer ? AI : PLAYER
     const opponent = !isMaximizingPlayer ? AI : PLAYER
     const threat = checkImmediateThreat(board, opponent)
+    const DEBUG_ON = true
+
+    if (DEBUG_ON) {
+        console.log('\nminmax d:',depth, 'r:', ri, 'c:', cj)
+    }
 
     if (checkWin(board, turn, ri, cj)) {
-        console.log('win node for:', turn)
-        log(board)
+        if (DEBUG_ON) {
+            console.log('win node for:', turn)
+            log(board)
+        }
         if (isMaximizingPlayer)
             return { score: WINNING_SCORE, row: null, col: null }
         else
             return { score: -LOSING_SCORE, row: null, col: null }
     }
 
-    if (threat) {
+    if (DEBUG_ON && threat) {
         console.log('immediate threat at next turn:', threat, 'for opponent:', opponent)
         log(board)
     }
 
     if (depth === 0) {
-        console.log('terminal node')
-        log(board)
-        const heuristic_score = evaluateBoard(board, isMaximizingPlayer)
-        console.log('terminal node score', heuristic_score)
+        const heuristic_score = evaluateBoard(board)
+
+        if (DEBUG_ON) {
+            console.log('terminal node')
+            log(board)
+            console.log('terminal node score', heuristic_score)
+        }
+
         return { score: heuristic_score, row: null, col: null }
     }
 
@@ -518,21 +562,20 @@ export const minmax = (board, nextMovesList, depth, isMaximizingPlayer, ri, cj, 
 
         for (const move of nextMovesList) {
             const [i, j] = move
-            if (board[i][j] === EMPTY) {
-                const newBoard3 = applyMove(board, move, AI)
-                const nextMovesList2 = getNextMoves(newBoard3, nextMovesList, i, j)
-                const nextMovesList3 = nextMovesList2.map(move => [...move])
+            const newBoard3 = applyMove(board, move, AI)
+            const nextMovesList2 = getNextMoves(newBoard3, nextMovesList, i, j)
+            const nextMovesList3 = nextMovesList2.map(m => [...m])
 
-                let result = minmax(newBoard3, nextMovesList3, depth - 1, false, i, j, alpha, beta)
+            let result = minmax(newBoard3, nextMovesList3, depth - 1, false, i, j, alpha, beta)
 
-                if (result.score > best.score) { // todo: >  can result error but >= is not working -> plays poorly
-                    best = { score: result.score, row: i, col: j }
-                }
-                alpha = Math.max(alpha, result.score)
-                if (beta <= alpha) {
-                    break // Alpha Beta Pruning
-                }
+            if (result.score > best.score) { 
+                best = { score: result.score, row: i, col: j }
             }
+            alpha = Math.max(alpha, result.score)
+            if (beta <= alpha) {
+                break // Alpha Beta Pruning
+            }
+
         }
 
         return best
@@ -541,21 +584,20 @@ export const minmax = (board, nextMovesList, depth, isMaximizingPlayer, ri, cj, 
 
         for (const move of nextMovesList) {
             const [i, j] = move
-            if (board[i][j] === EMPTY) {
-                const newBoard3 = applyMove(board, move, PLAYER)
-                const nextMovesList2 = getNextMoves(newBoard3, nextMovesList, i, j)
-                const nextMovesList3 = nextMovesList2.map(move => [...move])
+            const newBoard3 = applyMove(board, move, PLAYER)
+            const nextMovesList2 = getNextMoves(newBoard3, nextMovesList, i, j)
+            const nextMovesList3 = nextMovesList2.map(m => [...m])
 
-                let result = minmax(newBoard3, nextMovesList3, depth - 1, true, i, j, alpha, beta)
+            let result = minmax(newBoard3, nextMovesList3, depth - 1, true, i, j, alpha, beta)
 
-                if (result.score < best.score) {
-                    best = { score: result.score, row: i, col: j }
-                }
-                beta = Math.min(beta, result.score)
-                if (beta <= alpha) {
-                    break // Alpha Beta Pruning
-                }
+            if (result.score < best.score) {
+                best = { score: result.score, row: i, col: j }
             }
+            beta = Math.min(beta, result.score)
+            if (beta <= alpha) {
+                break // Alpha Beta Pruning
+            }
+
         }
 
         return best
@@ -567,12 +609,7 @@ export const minmax = (board, nextMovesList, depth, isMaximizingPlayer, ri, cj, 
  * DEBUG
  */
 
-const DEBUG = false
-const debugLog = (msg) => {
-    if (DEBUG)
-        console.log(msg)
-}
-
+// checkWin
 const DEBUG2 = true
 const debugLog2 = (msg, player, len) => {
     if (DEBUG2)

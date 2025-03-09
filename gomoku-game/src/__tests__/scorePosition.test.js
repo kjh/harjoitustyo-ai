@@ -273,6 +273,18 @@ describe('evaluateDiagonals', () => {
 });
 
 describe('evaluateAntiDiagonals', () => {
+    it('should calculate score for Antidiagonals correctly #0', () => {
+        const board = Array(20).fill(null).map(() => Array(20).fill(null));
+        board[6][12] = AI;
+        board[7][11] = AI;
+        board[8][10] = AI;
+        board[9][9] = AI;
+        log(board)
+
+        // Score should be AI: 2 (len 2), PLAYER: -10 (len 3)
+        expect(evaluateAntiDiagonals(board)).toBe(1000);
+    });
+
     it('should calculate score for Antidiagonals correctly #1', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][4] = AI;
@@ -280,7 +292,6 @@ describe('evaluateAntiDiagonals', () => {
         board[2][2] = PLAYER;
         board[3][1] = PLAYER;
         board[4][0] = PLAYER;
-
         log(board)
 
         // Score should be AI: 2 (len 2), PLAYER: -10 (len 3)
@@ -316,7 +327,7 @@ describe('evaluateAntiDiagonals', () => {
         expect(evaluateAntiDiagonals(board)).toBe(Infinity);
     });
 
-    it('should not calculate corner Antidiagonals if lenght < 5', () => {
+    it('should not calculate corner Antidiagonals if length < 5', () => {
         const board = Array(20).fill(null).map(() => Array(20).fill(null));
         board[0][3] = AI;
         board[1][2] = AI;
@@ -350,11 +361,11 @@ describe('evaluateBoard', () => {
         board[0][6] = PLAYER;
         board[0][7] = PLAYER;
         board[0][8] = PLAYER;
-
+        console.log("ERROR")
         log(board)
 
-        // Score should be AI: tie
-        expect(evaluateBoard(board)).toBe(0);
+        // Score should be AI: -4 (no antidiagonals for ai)
+        expect(evaluateBoard(board)).toBe(-4);
     });
 
     it('should calculate score for Board correctly #1', () => {
