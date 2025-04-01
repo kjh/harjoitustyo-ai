@@ -4,7 +4,7 @@ import { applyMove, minmax, getNextMoves } from '../minmax';
 const PLAYER = 'X'
 const AI = 'O'
 
-const DEBUG_MGS = false
+const DEBUG_MGS = true
 
 const log = (board) => {
     let msg = ''
@@ -119,5 +119,79 @@ describe('test minmax', () => {
         log(newBoard4)
 
         expect(result).toEqual({ score: Infinity, row: 5, col: 13 });
+    });
+
+    it('AI should find win (score = Infinity) at depth 5 if it has (two length 2 lines) special 5 turn win shape on board', () => {
+        const board = Array(20).fill(null).map(() => Array(20).fill(null));
+
+        let nextMovesList = []; 
+        board[11][10] = AI;
+        nextMovesList = getNextMoves(board, [], 11, 10);
+        board[12][10] = AI;
+        nextMovesList = getNextMoves(board, nextMovesList, 12, 10);
+
+        board[10][11] = AI;
+        nextMovesList = getNextMoves(board, nextMovesList, 10, 11);
+        board[10][12] = AI;
+        nextMovesList = getNextMoves(board, nextMovesList, 10, 12);
+        
+        // Special 5 turn win shape
+        log(board)
+        console.log(nextMovesList)
+
+        // AI's turn d=5
+        let result = minmax(board, nextMovesList, 5, true, 11, 10, -Infinity, Infinity)
+
+        console.log('result', result)
+
+        const newBoard2 = applyMove(board, [result.row, result.col], AI)
+
+        log(newBoard2)
+
+        expect(result).toEqual({ score: Infinity, row: 10, col: 10 }); // Only move
+    });
+
+    // Check win after two moves from 5 turn win shape
+    it('(special 5 turn win shape continuation test. Check win (score = Infinity) at depth 3)', () => {
+        const board = Array(20).fill(null).map(() => Array(20).fill(null));
+
+        let nextMovesList = []; 
+
+        board[11][10] = AI;
+        nextMovesList = getNextMoves(board, [], 11, 10);
+        board[12][10] = AI;
+        nextMovesList = getNextMoves(board, nextMovesList, 12, 10);
+
+        board[10][11] = AI;
+        nextMovesList = getNextMoves(board, nextMovesList, 10, 11);
+        board[10][12] = AI;
+        nextMovesList = getNextMoves(board, nextMovesList, 10, 12);
+
+        // Add best move to staring position
+        board[10][10] = AI;
+        nextMovesList = getNextMoves(board, nextMovesList, 10, 10);
+
+
+        // Add players response (can't win but can try to block)
+        board[9][10] = PLAYER
+        nextMovesList = getNextMoves(board, nextMovesList, 9, 10);
+        
+        log(board)
+        console.log(nextMovesList)
+
+        // AI d=3
+        let result = minmax(board, nextMovesList, 3, true, 9, 10, -Infinity, Infinity)
+
+        console.log('result', result)
+
+        const newBoard2 = applyMove(board, [result.row, result.col], AI)
+
+        log(newBoard2)
+
+        // Best move is to make open 4
+        expect(result.row === 10 && (result.col === 9 || result.col === 13)).toEqual(true) 
+
+        // Should see win (Score is Infinity)
+        expect(result.score).toEqual(Infinity)
     });
 });

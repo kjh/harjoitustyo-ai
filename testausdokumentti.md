@@ -206,6 +206,16 @@ game.test.js testsuite testit:
 - syöte: pelilaudan tilanne
 - testaa että palauttaa oikeat arvot
 
+'AI should find win (score = Infinity) at depth 5 if it has (two length 2 lines) special 5 turn win shape on board'
+- testattu funktio: minmax
+- syöte: pelilaudan tilanne, jossa 5 siirron voitto
+- testaa että palauttaa score = Infinity (laudalla 5:n suora) syvyydellä 5
+
+'(special 5 turn win shape continuation test. Check win (score = Infinity) at depth 3)'
+- testattu funktio: minmax
+- syöte: pelilaudan tilanne, jossa 5 siirrosta on jatkettu 2 siirtoa. Ai:n paras siirto. PLAYER siirto ei voi estää, mutta blokkaa yhden.
+- testaa että palauttaa score = Infinity (laudalla 5:n suora) syvyydellä 3 (5-2 siirtoa)
+
 ### Testattu funktio: Board
 
 Board.test.js testsuite testit:
