@@ -26,10 +26,10 @@ describe('scorePosition', () => {
         expect(scorePosition(3, PLAYER)).toBe(-10);
         expect(scorePosition(4, AI)).toBe(1000);
         expect(scorePosition(4, PLAYER)).toBe(-1000);
-        expect(scorePosition(5, AI)).toBe(Infinity);
-        expect(scorePosition(5, PLAYER)).toBe(-Infinity);
-        expect(scorePosition(10, AI)).toBe(Infinity);
-        expect(scorePosition(10, PLAYER)).toBe(-Infinity);
+        expect(scorePosition(5, AI)).toBe(1000000);
+        expect(scorePosition(5, PLAYER)).toBe(-1000000);
+        expect(scorePosition(10, AI)).toBe(1000000);
+        expect(scorePosition(10, PLAYER)).toBe(-1000000);
     });
 });
 
@@ -62,7 +62,7 @@ describe('evaluateRows', () => {
 
         log(board)
 
-        // Score should be AI: 1000 (len 4), PLAYER: -1000 (len 4)
+        // Score should be 
         expect(evaluateRows(board)).toBe(1000 - 1000);
     });
 
@@ -91,8 +91,8 @@ describe('evaluateRows', () => {
 
         log(board)
 
-        // Score should be AI: 1 + 2 + 10 + 1000 + Infinity = Infinity, PLAYER: 0 (len 0)
-        expect(evaluateRows(board)).toBe(Infinity);
+        // Score should be: 1 + 2 + 10 + 1000 + 1000000 
+        expect(evaluateRows(board)).toBe(1000000 + 1 + 2 + 10 + 1000);
     });
 
     it('should calculate score for Rows correctly #4', () => {
@@ -105,8 +105,8 @@ describe('evaluateRows', () => {
 
         log(board)
 
-        // Score should be AI: 2 (len 1), PLAYER: -10 (len 3)
-        expect(evaluateRows(board)).toBe(-Infinity);
+        // Score should be: -1000000 
+        expect(evaluateRows(board)).toBe(-1000000);
     });
 
     it('should return 0 for an empty board', () => {
@@ -114,7 +114,7 @@ describe('evaluateRows', () => {
 
         log(board)
 
-        // Score should be AI: 0 (len 0), PLAYER: 0 (len 0)
+        // Score should be 
         expect(evaluateRows(board)).toBe(0);
     });
 });
@@ -130,7 +130,7 @@ describe('evaluateColumns', () => {
 
         log(board)
 
-        // Score should be AI: 2 (len 1), PLAYER: -10 (len 3)
+        // Score should be 
         expect(evaluateColumns(board)).toBe(2 - 10);
     });
 
@@ -147,8 +147,8 @@ describe('evaluateColumns', () => {
 
         log(board)
 
-        // Score should be AI: 1000 (len 4), PLAYER: -1000 (len 4)
-        expect(evaluateColumns(board)).toBe(1000 - 1000);
+        // Score should be 
+        expect(evaluateColumns(board)).toBe(0);
     });
 
     it('should calculate score for Columns correctly #3', () => {
@@ -176,8 +176,8 @@ describe('evaluateColumns', () => {
 
         log(board)
 
-        // Score should be AI: 1 + 2 + 10 + 1000 + Infinity = Infinity, PLAYER: 0 (len 0)
-        expect(evaluateColumns(board)).toBe(Infinity);
+        // Score should be 
+        expect(evaluateColumns(board)).toBe(1000000 + 1 + 2 + 10 + 1000);
     });
 
     it('should calculate score for Columns correctly #4', () => {
@@ -191,8 +191,8 @@ describe('evaluateColumns', () => {
 
         log(board)
 
-        // Score should be AI: 2 (len 1), PLAYER: -10 (len 3)
-        expect(evaluateColumns(board)).toBe(-Infinity);
+        // Score should be
+        expect(evaluateColumns(board)).toBe(-1000000);
     });
 
     it('should return 0 for an empty board', () => {
@@ -200,7 +200,7 @@ describe('evaluateColumns', () => {
 
         log(board)
 
-        // Score should be AI: 0 (len 0), PLAYER: 0 (len 0)
+        // Score should be 
         expect(evaluateColumns(board)).toBe(0);
     });
 });
@@ -216,7 +216,7 @@ describe('evaluateDiagonals', () => {
 
         log(board)
 
-        // Score should be AI: 2 (len 2), PLAYER: -10 (len 3)
+        // Score should be 
         expect(evaluateDiagonals(board)).toBe(2 - 10);
     });
 
@@ -245,8 +245,8 @@ describe('evaluateDiagonals', () => {
 
         log(board)
 
-        // Score should be AI: 1 + 2 + 10 + 1000 + Infinity = Infinity, PLAYER: 0 (len 0)
-        expect(evaluateDiagonals(board)).toBe(Infinity);
+        // Score should be 
+        expect(evaluateDiagonals(board)).toBe(1000000 + 1 + 2 + 10 + 1000);
     });
 
     it('should not calculate corner Diagonals if lenght < 5', () => {
@@ -258,7 +258,7 @@ describe('evaluateDiagonals', () => {
 
         log(board)
 
-        // Score should be AI: skip, PLAYER: skip 
+        // Score should be 0 (skip)
         expect(evaluateDiagonals(board)).toBe(0);
     });
 
@@ -267,7 +267,7 @@ describe('evaluateDiagonals', () => {
 
         log(board)
 
-        // Score should be AI: 0 (len 0), PLAYER: 0 (len 0)
+        // Score should be 
         expect(evaluateDiagonals(board)).toBe(0);
     });
 });
@@ -323,8 +323,8 @@ describe('evaluateAntiDiagonals', () => {
 
         log(board)
 
-        // Score should be AI: 1 + 2 + 10 + 1000 + Infinity = Infinity, PLAYER: 0 (len 0)
-        expect(evaluateAntiDiagonals(board)).toBe(Infinity);
+        // Score should be 
+        expect(evaluateAntiDiagonals(board)).toBe(1000000 + 1 + 2 + 10 + 1000);
     });
 
     it('should not calculate corner Antidiagonals if length < 5', () => {
@@ -336,7 +336,7 @@ describe('evaluateAntiDiagonals', () => {
 
         log(board)
 
-        // Score should be AI: skip 0, PLAYER: skip 0 
+        // Score should be 0 (skip)
         expect(evaluateDiagonals(board)).toBe(0);
     });
 
@@ -392,8 +392,8 @@ describe('evaluateBoard', () => {
 
         log(board)
 
-        // Score should be AI: 1 + 2 + 10 + 1000 + Infinity = Infinity, PLAYER: 0 (len 0)
-        expect(evaluateBoard(board)).toBe(Infinity);
+        // Score should be 
+        expect(evaluateBoard(board)).toBe(1001052);
     });
 
     it('should calculate score for Board correctly #2', () => {
@@ -407,8 +407,8 @@ describe('evaluateBoard', () => {
 
         log(board)
 
-        // Score should be AI: 0, PLAYER: -Infinity
-        expect(evaluateBoard(board)).toBe(-Infinity);
+        // Score should be 
+        expect(evaluateBoard(board)).toBe(-1000012);
     });
 
     it('should return 0 for an empty board', () => {

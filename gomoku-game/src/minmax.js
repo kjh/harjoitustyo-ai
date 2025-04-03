@@ -1,8 +1,8 @@
 const EMPTY = null
 const PLAYER = 'X'
 const AI = 'O'
-const WINNING_SCORE = Infinity
-const LOSING_SCORE = -Infinity
+const WINNING_SCORE = 1000000 // Infinity
+const LOSING_SCORE = -1000000 // -Infinity
 
 export const scorePosition = (len, plr) => {
     let score = 0
@@ -472,10 +472,27 @@ export const checkWin = (board, player, moveRow, moveCol) => {
  * @returns {Array.<Array.<number>>} - An array of unique next moves as [row, col] pairs
  */
 export const getNextMoves = (board, nextMovesList, row, col) => {
-    const directions = [
+    const directions_1 = [
         [0, 1], [1, 0], [0, -1], [-1, 0], // horizontal and vertical +1
         [1, 1], [1, -1], [-1, 1], [-1, -1], // diagonals +1
     ]
+    
+    let add_directions = directions_1
+
+    const DISTANCE_2 = true // increase search distance if enough processing power
+
+    if (DISTANCE_2) {
+        add_directions = [
+            ...directions_1,
+            [0, 2], [2, 0], [0, -2], [-2, 0],
+            [2, 2], [2, -2], [-2, 2], [-2, -2], 
+            [1, 2], [2, 1], [1, -2], [2, -1], 
+            [-1, 2], [-2, 1], [-1, -2], [-2, -1] 
+        ]
+    }
+
+    const directions = add_directions
+
     const isNextMovesListEmpty = nextMovesList === null || nextMovesList.length === 0
     const filteredMoves = isNextMovesListEmpty ? [] : nextMovesList.filter(move => !(move[0] === row && move[1] === col))
     const nextMovesSet = new Set(filteredMoves.map(JSON.stringify))
@@ -522,8 +539,8 @@ export const applyMove = (board, move, turn) => {
 export const minmax = (board, nextMovesList, depth, isMaximizingPlayer, ri, cj, alpha, beta) => {
     const turn = isMaximizingPlayer ? AI : PLAYER
     const opponent = !isMaximizingPlayer ? AI : PLAYER
-    const threat = checkImmediateThreat(board, opponent)
-    const DEBUG_ON = true
+    const threat = false //checkImmediateThreat(board, opponent)
+    const DEBUG_ON = false
 
     if (DEBUG_ON) {
         console.log('\nminmax d:',depth, 'r:', ri, 'c:', cj)
@@ -610,7 +627,7 @@ export const minmax = (board, nextMovesList, depth, isMaximizingPlayer, ri, cj, 
  */
 
 // checkWin
-const DEBUG2 = true
+const DEBUG2 = false
 const debugLog2 = (msg, player, len) => {
     if (DEBUG2)
         console.log(msg, player, len)

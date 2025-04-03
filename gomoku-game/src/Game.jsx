@@ -64,6 +64,12 @@ const Game = () => {
       setBoard(newBoard2) 
       setWaitAi(false) // AI move complete
 
+      if (!bestMove.row || !bestMove.col) { // Just resign if can't win
+        console.log('AI resigns!')
+        setGameOver(true)
+        return
+      }
+
       if (checkWin(newBoard2, 'O',  bestMove.row,  bestMove.col)) {
         console.log('AI won the game!')
         setGameOver(true)
@@ -74,7 +80,7 @@ const Game = () => {
  
 
   const findBestMove = (board, nextMovesList, row, col) => {
-    const res = minmax(board, nextMovesList, 4, true, row, col, -Infinity, Infinity)
+    const res = minmax(board, nextMovesList, 4, true, row, col, -1000000, 1000000)//-Infinity, Infinity)
     return { score: res.score, row: res.row, col: res.col }
   }
 

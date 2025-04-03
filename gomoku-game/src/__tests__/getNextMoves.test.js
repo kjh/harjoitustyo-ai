@@ -8,13 +8,18 @@ describe('getNextMoves', () => {
         const nextMovesList = [];
 
         const expectedMoves = [
-            [9, 10], [11, 10], [10, 9], [10, 11], 
-            [9, 9], [11, 11], [9, 11], [11, 9]
+            [8,8], [8,9], [8,10], [8,11], [8,12], 
+            [9,8], [9,9], [9,10], [9,11], [9,12], 
+            [10,8], [10,9], [10,11], [10,12],
+            [11,8], [11,9], [11,10], [11,11], [11,12],
+            [12,8], [12,9], [12,10], [12,11], [12,12],
         ];
 
         const result = getNextMoves(board, nextMovesList, row, col);
+
+        console.log(result);
         
-        expect(result).toHaveLength(8); 
+        expect(result).toHaveLength(24); 
         expectedMoves.forEach(move => {
             expect(result).toContainEqual(move);
         });
@@ -40,12 +45,14 @@ describe('getNextMoves', () => {
         const nextMovesList = [];
 
         const expectedMoves = [
-            [0, 1], [1, 0], [1, 1]
+            [0, 1], [0 ,2],
+            [1, 0], [1, 1], [1, 2],
+            [2, 0], [2, 1], [2, 2]
         ];
 
         const result = getNextMoves(board, nextMovesList, row, col);
         
-        expect(result).toHaveLength(3);
+        expect(result).toHaveLength(8);
         expectedMoves.forEach(move => {
             expect(result).toContainEqual(move);
         });

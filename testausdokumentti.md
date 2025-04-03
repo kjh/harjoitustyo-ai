@@ -196,7 +196,7 @@ game.test.js testsuite testit:
 - syöte: pelilaudan tilanne
 - testaa että palauttaa oikeat arvot
 
-'AI should block player if opponent has 4 d=3'
+'AI should block player if opponent has 4 d=4'
 - testattu funktio: minmax
 - syöte: pelilaudan tilanne
 - testaa että palauttaa oikeat arvot

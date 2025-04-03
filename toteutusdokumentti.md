@@ -20,8 +20,7 @@ Tärkeimmät funktiot ovat:
 - alpha-beta karsinta hyötyy, jos paremmat siirrot käsitellään ensin. Eli siirtojen järjestyksellä voidaan tehostaa algoritmia.
 
 ```javascript export const getNextMoves = (board, nextMovesList, row, col)```
-- Jokaisen siirron jälkeen lisätään hakulistaan - suhteessa pelattuun merkkiin - yhden päässä olevat ruudut. 
-- Tätä parametria voisi muokata niin, että lisätään 2 päässä olevat siirrot. (Ei toteutettu, mutta hyvä parannusehdotus.)
+- Jokaisen siirron jälkeen lisätään hakulistaan pelatusta ruudusta maksimissaan 2 ruudun päässä olevat ruudut. 
 - Lisäksi paremmat siirrot kannattaa kokeilla ensin. (Ei toteutettu, mutta hyvä parannusehdotus.)
 
 ```javascript export const evaluateBoard = (board, isMaximizingPlayer) ja export const scorePosition = (len, plr)```
@@ -59,14 +58,13 @@ Algorimit tilavaativuus on on d (haun syvyys), joka on siis vakio O(1). [1]
 
 Aika- ja tilavaativuuksien optimoinnit:
 
-Haarautumisaste on rajoitettu etsimällä aloitussiirrot 1 päähän pelatuista. 
+Haarautumisaste on rajoitettu etsimällä aloitussiirrot 2 päähän pelatuista. 
 
 Haku tehdään syvyyssuuntaisena hakuna. Koska hakusyvyys on rajoitettu tilavaativuus ei ole rajoite.
 
 Pelin käyttämä oletushakusyvyys on 4 ja sillä asetuksella tuottaa järkeviä siirtoja. Hakuaika on pelin alussa hyvä vielä tällä syvyydellä.    
 
-## Puutteet ja parannusehdotukset
-- Lisätään 2 päässä olevat siirrot etsittäviin. 
+## Puutteet ja parannusehdotukset 
 - Paremmat siirrot kannattaa kokeilla ensin.
 - Parempi heuristiikka: esim. onko suora avoin (voi voittaa) suljettu (ei voi voittaa).
 - Välittömiin uhkiin reagointi.
