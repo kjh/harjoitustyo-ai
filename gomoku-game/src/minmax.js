@@ -539,7 +539,18 @@ export const applyMove = (board, move, turn) => {
 export const minmax = (board, nextMovesList, depth, isMaximizingPlayer, ri, cj, alpha, beta) => {
     const turn = isMaximizingPlayer ? AI : PLAYER
     const opponent = !isMaximizingPlayer ? AI : PLAYER
-    const threat = false //checkImmediateThreat(board, opponent)
+
+    // Speed up seach
+    // Check immediate win/threat 
+    let threat = false
+    let winning_move = false
+
+    // depth 4 
+    if (depth == 4) {
+        threat = checkImmediateThreat(board, opponent)
+        winning_move = checkImmediateThreat(board, turn)
+    }
+
     const DEBUG_ON = false
 
     if (DEBUG_ON) {
@@ -554,7 +565,7 @@ export const minmax = (board, nextMovesList, depth, isMaximizingPlayer, ri, cj, 
         if (isMaximizingPlayer)
             return { score: WINNING_SCORE, row: null, col: null }
         else
-            return { score: -LOSING_SCORE, row: null, col: null }
+            return { score: LOSING_SCORE, row: null, col: null }
     }
 
     if (DEBUG_ON && threat) {
@@ -575,6 +586,12 @@ export const minmax = (board, nextMovesList, depth, isMaximizingPlayer, ri, cj, 
     }
 
     if (isMaximizingPlayer) {
+        if (winning_move) 
+            return { score: WINNING_SCORE, row: winning_move[0], col: winning_move[1] }
+
+        if (threat)
+            return { score: LOSING_SCORE, row: threat[0], col: threat[1] }
+
         let best = { score: LOSING_SCORE, row: null, col: null }
 
         for (const move of nextMovesList) {
@@ -597,6 +614,12 @@ export const minmax = (board, nextMovesList, depth, isMaximizingPlayer, ri, cj, 
 
         return best
     } else {
+        if (winning_move) 
+            return { score: LOSING_SCORE, row: winning_move[0], col: winning_move[1] }
+
+        if (threat)
+            return { score: WINNING_SCORE, row: threat[0], col: threat[1] }
+
         let best = { score: WINNING_SCORE, row: null, col: null }
 
         for (const move of nextMovesList) {

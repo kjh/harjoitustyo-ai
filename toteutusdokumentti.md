@@ -48,7 +48,10 @@ Tärkeimmät funktiot ovat:
 - Pelin voittaa vähintään viiden merkin pituisella rivillä.
 
 ## Mitä syötteitä ohjelma saa ja miten niitä käytetään? 
-Algoritmi saa työtteenä pelilaudan tilan, josta lähdetään etsimään parasta siirtoa.
+Algoritmi saa työtteenä pelilaudan tilan, josta lähdetään etsimään parasta siirtoa. 
+
+Päivitys:
+Lisätty välittömän voiton pelaaminen tai tappion esto ennen kuin etsitään siirtoja hakusyvyydella 0.
 
 ## Saavutetut aika- ja tilavaativuudet
 Minmax-algoritmin aikavaativuus on luokkaa: O(b^d), missä b on pelipuun haarautumisaste (sallittujen siirtojen
@@ -67,7 +70,6 @@ Pelin käyttämä oletushakusyvyys on 4 ja sillä asetuksella tuottaa järkeviä
 ## Puutteet ja parannusehdotukset 
 - Paremmat siirrot kannattaa kokeilla ensin.
 - Parempi heuristiikka: esim. onko suora avoin (voi voittaa) suljettu (ei voi voittaa).
-- Välittömiin uhkiin reagointi.
 - Kattavampi testaus minmax-algoritmille.
 - Jos laskenta vie liikaa aikaa, selain ei tykkää tästä ja kysyy odotetaanko vai lopetetaan suoritus. Tämä johtuu siitä että
 javascript on suoritetaan yhdessä säikeessä. Javascriptin 'web worker' ominaisuuden avulla laskennan voisi suorittaa omassa säikeessä ilman, että selainikkuna jumiutuu tai herjaa.

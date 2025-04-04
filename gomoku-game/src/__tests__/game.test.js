@@ -67,7 +67,7 @@ describe('test minmax', () => {
 
         log(newBoard4)
 
-        expect(result).toEqual({ score: -1011, row: 0, col: 6 });
+        expect(result).toEqual({ score: -1000000, row: 0, col: 6 });
     }); 
 
     it('AI should win player if has row of 4 on board d=3', () => {
